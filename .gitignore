@@ -6,6 +6,7 @@
 out
 .shadow-cljs
 node_modules
+.DS_Store
 
 #amplify
 amplify/\#current-cloud-backend
