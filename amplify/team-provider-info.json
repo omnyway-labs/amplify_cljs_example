@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "reframerecomamplifye-dev-20191004225035-authRole",
+            "UnauthRoleArn": "arn:aws:iam::347719000464:role/reframerecomamplifye-dev-20191004225035-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::347719000464:role/reframerecomamplifye-dev-20191004225035-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "reframerecomamplifye-dev-20191004225035-deployment",
+            "UnauthRoleName": "reframerecomamplifye-dev-20191004225035-unauthRole",
+            "StackName": "reframerecomamplifye-dev-20191004225035",
+            "StackId": "arn:aws:cloudformation:us-east-1:347719000464:stack/reframerecomamplifye-dev-20191004225035/0dda8090-e734-11e9-9dbd-0ee7d31f28a0"
+        },
+        "categories": {
+            "auth": {
+                "reframerecomamplifye16cd456a": {}
+            }
+        }
+    }
+}

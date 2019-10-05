@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"reframerecomamplifye16cd456a": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}
