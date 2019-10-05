@@ -9,6 +9,7 @@ frontend:
   phases:
     preBuild:
       commands:
+        - npm install -g shadow-cljs
         - npm ci
     build:
       commands: [shadow-cljs release app]
