@@ -44,6 +44,8 @@ git commit -m "lein updates to package.json" package-lock.json  package.json
 ![](images/initial_working_display.png)
 ## Set up AWS Amplify
 * You should be in the top level of the `re-frame-re-com-amplify-exp` directory
+* __NOTE FOR OMNYWAY FOLKS:__ 
+  * Use the credentials for `amplify-laboratory` in the `dev` vault
 * Assuming you don’t already have AWS Amplify installed on your dev machine:
 ```shell
 npm install -g @aws-amplify/cli
