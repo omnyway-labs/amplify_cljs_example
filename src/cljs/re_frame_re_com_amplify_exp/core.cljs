@@ -5,6 +5,9 @@
    [re-frame-re-com-amplify-exp.events :as events]
    [re-frame-re-com-amplify-exp.views :as views]
    [re-frame-re-com-amplify-exp.config :as config]
+   ["aws-amplify" :default Amplify :as amp]
+   ["aws-amplify-react" :refer (withAuthenticator)]
+   ["/aws-exports.js" :default aws-exports]
    ))
 
 
@@ -12,12 +15,18 @@
   (when config/debug?
     (println "dev mode")))
 
+(def root-view
+  (reagent/adapt-react-class
+   (withAuthenticator
+    (reagent/reactify-component views/main-panel) true)))
+
 (defn ^:dev/after-load mount-root []
   (re-frame/clear-subscription-cache!)
-  (reagent/render [views/main-panel]
+  (.configure Amplify aws-exports)
+  (re-frame/dispatch-sync [::events/initialize-db])
+  (reagent/render [root-view]
                   (.getElementById js/document "app")))
 
 (defn init []
-  (re-frame/dispatch-sync [::events/initialize-db])
   (dev-setup)
   (mount-root))
