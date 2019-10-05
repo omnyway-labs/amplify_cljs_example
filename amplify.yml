@@ -11,7 +11,7 @@ frontend:
       commands:
         - npm ci
     build:
-      commands: [lein prod]
+      commands: [shadow-cljs release app]
   artifacts:
     baseDirectory: resources/public/
     files:
