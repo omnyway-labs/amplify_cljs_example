@@ -1,0 +1,10 @@
+/*.log
+/target
+/*-init.clj
+/resources/public/js/compiled
+out
+.shadow-cljs
+node_modules
+build/
+dist/
+/resources/public/css/screen.css
