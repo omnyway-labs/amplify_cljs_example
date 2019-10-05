@@ -5,7 +5,7 @@
     "javascript": {
         "framework": "react",
         "config": {
-            "SourceDir": "src",
+            "SourceDir": "src/cljs",
             "DistributionDir": "build",
             "BuildCommand": "npm run-script build",
             "StartCommand": "lein dev"
