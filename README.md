@@ -1,6 +1,8 @@
-# re-frame-re-com-amplify-exp
+# Example re-frame/re-com app with AWS Amplify based Authenticator
 
-A [re-frame](https://github.com/Day8/re-frame) application that demonstrates how to use AWS Amplify Cognito with an automautomatic Authenticator wrapper. It uses the AWS Amplify react UI features. 
+A [re-frame](https://github.com/Day8/re-frame) application that demonstrates how
+to use AWS Amplify Cognito with an automautomatic Authenticator wrapper. It uses
+the AWS Amplify react UI features with almost no code on your part.
 
 With a very simple wrapper around the app, you automatically get full
 integration with AWS Cognito and a UI to do 
@@ -8,6 +10,9 @@ integration with AWS Cognito and a UI to do
 * _Sign-in_ 
 * _Sign-out_
 * _Password change_
+
+You don't have to write any UI or detailed AWS code to get all these features.
+You can easily add other AWS Amplify services on top of this.
 
 Once you have this basic setup, its easy to add Federated Social Login, OTP,
 etc. just by following the AWS Amplify documentation.
