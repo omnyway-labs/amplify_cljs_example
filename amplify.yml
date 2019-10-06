@@ -9,10 +9,17 @@ frontend:
   phases:
     preBuild:
       commands:
+        - amazon-linux-extras enable corretto8
+        - yum install java-1.8.0-amazon-corretto-devel
+        - java -version
+        - curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > lein
+        - mv lein /usr/local/bin/lein
+        - chmod a+x /usr/local/bin/lein
+        - lein version
         - npm install -g shadow-cljs
         - npm ci
     build:
-      commands: [shadow-cljs release app]
+      commands: [lein prod]
   artifacts:
     baseDirectory: resources/public/
     files:
