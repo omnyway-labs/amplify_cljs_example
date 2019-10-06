@@ -10,7 +10,7 @@ frontend:
     preBuild:
       commands:
         - amazon-linux-extras enable corretto8
-        - yum install java-1.8.0-amazon-corretto-devel
+        - yum -y install java-1.8.0-amazon-corretto-devel
         - java -version
         - curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > lein
         - mv lein /usr/local/bin/lein
