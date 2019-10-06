@@ -86,6 +86,23 @@ lein run -m shadow.cljs.devtools.cli compile karma-test
 karma start --single-run --reporters junit,dots
 ```
 
+## Production Deployment
+
+### Build the Assets Manually
+
+```
+lein prod
+```
+
+* Webapp assets are all under `resources/public/`
+* Amplify AWS Backend code is all under `amplify`
+
+### Amplify Deploy via AWS CI
+
+The `amplify.yml` file is the build instructions for the AWS Amplify CI and Deployment.
+
+Instructions for setting up your own AWS Amplify Deploy is in the wiki at [Deploy to CloudFront with Amplify Console](https://github.com/omnyway-labs/re-frame-re-com-amplify-shadow-cljs/wiki/2.-Deploy-to-CloudFront-with-Amplify-Console
+)
 ## License - Apache 2.0
 
 Copyright 2019 Omnyway Inc.
