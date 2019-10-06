@@ -7,7 +7,7 @@
         "config": {
             "SourceDir": "src/cljs",
             "DistributionDir": "build",
-            "BuildCommand": "npm run-script build",
+            "BuildCommand": "lein prod",
             "StartCommand": "lein dev"
         }
     },
