@@ -19,7 +19,7 @@ etc. just by following the AWS Amplify documentation.
 
 ## Build From Scratch
 
-See [How to Build From Scratch](docs/how_to_build_from_scratch.md) for a full explanation on how to:
+See the wiki page: [Setup and Initial Creation of App With Authentication](https://github.com/omnyway-labs/re-frame-re-com-amplify-shadow-cljs/wiki/Setup-and-Initial-Creation-of-App-With-Authentication) for a full explanation on how to:
 * Create initial re-frame / re-com / shadow-cljs project scaffolding
 * Add AWS Amplify to the project
 * Add the Amplify Authenticator to the project
