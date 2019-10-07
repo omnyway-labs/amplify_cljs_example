@@ -1,4 +1,4 @@
-(ns re-frame-re-com-amplify-exp.config)
+(ns amplify-cljs-example.config)
 
 (def debug?
   ^boolean goog.DEBUG)

@@ -1,8 +1,8 @@
-(ns re-frame-re-com-amplify-exp.views
+(ns amplify-cljs-example.views
   (:require
    [re-frame.core :as re-frame]
    [re-com.core :as re-com]
-   [re-frame-re-com-amplify-exp.subs :as subs]
+   [amplify-cljs-example.subs :as subs]
    ))
 
 (defn title []

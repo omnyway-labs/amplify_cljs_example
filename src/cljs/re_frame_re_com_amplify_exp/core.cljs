@@ -1,10 +1,10 @@
-(ns re-frame-re-com-amplify-exp.core
+(ns amplify-cljs-example.core
   (:require
    [reagent.core :as reagent]
    [re-frame.core :as re-frame]
-   [re-frame-re-com-amplify-exp.events :as events]
-   [re-frame-re-com-amplify-exp.views :as views]
-   [re-frame-re-com-amplify-exp.config :as config]
+   [amplify-cljs-example.events :as events]
+   [amplify-cljs-example.views :as views]
+   [amplify-cljs-example.config :as config]
    ["aws-amplify" :default Amplify :as amp]
    ["aws-amplify-react" :refer (withAuthenticator)]
    ["/aws-exports.js" :default aws-exports]

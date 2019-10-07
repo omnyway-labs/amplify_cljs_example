@@ -1,7 +1,7 @@
-(ns re-frame-re-com-amplify-exp.events
+(ns amplify-cljs-example.events
   (:require
    [re-frame.core :as re-frame]
-   [re-frame-re-com-amplify-exp.db :as db]
+   [amplify-cljs-example.db :as db]
    [day8.re-frame.tracing :refer-macros [fn-traced defn-traced]]
    ))
 

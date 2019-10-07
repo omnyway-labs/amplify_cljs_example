@@ -1,4 +1,4 @@
-(ns re-frame-re-com-amplify-exp.db)
+(ns amplify-cljs-example.db)
 
 (def default-db
   {:name "re-frame"})

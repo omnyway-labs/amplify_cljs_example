@@ -1,4 +1,4 @@
-(ns re-frame-re-com-amplify-exp.css
+(ns amplify-cljs-example.css
   (:require [garden.def :refer [defstyles]]))
 
 (defstyles screen

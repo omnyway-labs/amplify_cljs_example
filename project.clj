@@ -1,4 +1,4 @@
-(defproject re-frame-re-com-amplify-exp "0.1.0-SNAPSHOT"
+(defproject amplify-cljs-example "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [org.clojure/clojurescript "1.10.520"
                   :exclusions [com.google.javascript/closure-compiler-unshaded
@@ -27,7 +27,7 @@
 
   :garden {:builds [{:id           "screen"
                      :source-paths ["src/clj"]
-                     :stylesheet   re-frame-re-com-amplify-exp.css/screen
+                     :stylesheet   amplify-cljs-example.css/screen
                      :compiler     {:output-to     "resources/public/css/screen.css"
                                     :pretty-print? true}}]}
 

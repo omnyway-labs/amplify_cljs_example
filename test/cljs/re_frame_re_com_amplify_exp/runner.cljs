@@ -1,5 +1,5 @@
-(ns re-frame-re-com-amplify-exp.runner
+(ns amplify-cljs-example.runner
     (:require [doo.runner :refer-macros [doo-tests]]
-              [re-frame-re-com-amplify-exp.core-test]))
+              [amplify-cljs-example.core-test]))
 
-(doo-tests 're-frame-re-com-amplify-exp.core-test)
+(doo-tests 'amplify-cljs-example.core-test)

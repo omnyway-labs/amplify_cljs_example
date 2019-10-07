@@ -1,4 +1,4 @@
-(ns re-frame-re-com-amplify-exp.subs
+(ns amplify-cljs-example.subs
   (:require
    [re-frame.core :as re-frame]))
 

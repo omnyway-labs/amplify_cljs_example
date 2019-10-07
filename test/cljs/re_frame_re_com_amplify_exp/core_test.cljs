@@ -1,6 +1,6 @@
-(ns re-frame-re-com-amplify-exp.core-test
+(ns amplify-cljs-example.core-test
   (:require [cljs.test :refer-macros [deftest testing is]]
-            [re-frame-re-com-amplify-exp.core :as core]))
+            [amplify-cljs-example.core :as core]))
 
 (deftest fake-test
   (testing "fake description"
