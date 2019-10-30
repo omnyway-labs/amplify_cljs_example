@@ -19,3 +19,7 @@ dist/
 node_modules/
 aws-exports.js
 awsconfiguration.json
+
+# Local stuff
+node_modules-discovery/
+node_modules-xl5/

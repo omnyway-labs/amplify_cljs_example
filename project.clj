@@ -3,16 +3,16 @@
                  [org.clojure/clojurescript "1.10.520"
                   :exclusions [com.google.javascript/closure-compiler-unshaded
                                org.clojure/google-closure-library]]
-                 [thheller/shadow-cljs "2.8.59"]
+                 [thheller/shadow-cljs "2.8.68"]
                  [reagent "0.8.1"]
-                 [re-frame "0.10.9"]
+                 [re-frame "0.11.0-rc2"]
                  [re-com "2.6.0"]
                  [garden "1.3.9"]
                  [ns-tracker "0.4.0"]]
 
   :plugins [[lein-garden "0.3.0"]]
 
-  :min-lein-version "2.5.3"
+  :min-lein-version "2.9.1"
 
   :jvm-opts ["-Xmx1G"]
 
@@ -37,7 +37,7 @@
   :profiles
   {:dev
    {:dependencies [[binaryage/devtools "0.9.10"]
-                   [day8.re-frame/re-frame-10x "0.4.3"]
+                   [day8.re-frame/re-frame-10x "0.4.4"]
                    [day8.re-frame/tracing "0.5.3"]]}
 
    :prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.3"]]}
