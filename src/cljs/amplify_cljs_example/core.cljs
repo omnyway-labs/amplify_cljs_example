@@ -10,7 +10,6 @@
    ["/aws-exports.js" :default aws-exports]
    ))
 
-
 (defn dev-setup []
   (when config/debug?
     (println "dev mode")))
@@ -20,9 +19,21 @@
    (withAuthenticator
     (reagent/reactify-component views/main-panel) true)))
 
+(def aws-manual
+  {:Auth {:identityPoolId "us-east-1:61fe6ded-9c0f-481d-b32b-b624ad8119dc"
+          :region "us-east-1"
+          :userPoolId "us-east-1_GdM23KoC7"
+          :userPoolWebClientId "3dbbodfcli1spu0junujjorjo6"
+          }})
+
 (defn ^:dev/after-load mount-root []
   (re-frame/clear-subscription-cache!)
-  (.configure Amplify aws-exports)
+  (goog-define MANUAL false)
+
+  (if MANUAL
+    (.configure Amplify (clj->js aws-manual))
+    (.configure Amplify aws-exports))
+
   (re-frame/dispatch-sync [::events/initialize-db])
   (reagent/render [root-view]
                   (.getElementById js/document "app")))
