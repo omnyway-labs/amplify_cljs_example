@@ -14,7 +14,7 @@
 
   :min-lein-version "2.9.1"
 
-  :jvm-opts ["-Xmx1G"]
+  :jvm-opts ["-Xmx2G"]
 
   :source-paths ["src/clj" "src/cljs"]
 
