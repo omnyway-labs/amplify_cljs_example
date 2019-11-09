@@ -30,3 +30,9 @@
    (re-frame/dispatch [::set-aws-config aws-creds])
    (assoc-in db [:creds :aws-access] aws-creds)
    ))
+
+(re-frame/reg-event-db
+ ::set-auth-state
+ (fn [db [_ auth-state]]
+   (js/console.log "::set-auth-state" auth-state)
+   (assoc-in db [:auth-state]  auth-state)))

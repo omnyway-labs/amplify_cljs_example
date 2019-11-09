@@ -18,3 +18,8 @@
  (fn [db _]
    (get-in db [:creds :aws-config])))
 
+(re-frame/reg-sub
+ ::auth-state
+ (fn [db _]
+   (get-in db [:auth-state])))
+

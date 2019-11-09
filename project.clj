@@ -10,7 +10,8 @@
                  [garden "1.3.9"]
                  [ns-tracker "0.4.0"]]
 
-  :plugins [[lein-garden "0.3.0"]]
+  :plugins [[lein-garden "0.3.0"]
+            [lein-ancient "0.6.15"]]
 
   :min-lein-version "2.9.1"
 
@@ -37,7 +38,7 @@
   :profiles
   {:dev
    {:dependencies [[binaryage/devtools "0.9.10"]
-                   [day8.re-frame/re-frame-10x "0.4.4"]
+                   [day8.re-frame/re-frame-10x "0.4.5"]
                    [day8.re-frame/tracing "0.5.3"]]}
 
    :prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.3"]]}

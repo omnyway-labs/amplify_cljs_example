@@ -5,10 +5,19 @@
    [amplify-cljs-example.events :as events]
    [amplify-cljs-example.views :as views]
    [amplify-cljs-example.config :as config]
-   ["aws-amplify" :default Amplify :as amp]
+   ["aws-amplify" :refer (Hub) :default Amplify]
    ["aws-amplify-react" :refer (withAuthenticator)]
    ["/aws-exports.js" :default aws-exports]
    ))
+
+(defn setup-hub-listener []
+  (js/console.log "Top of setup-hub-listener")
+    (.listen Hub "auth"
+             (fn [data]
+               (js/console.log "HUB : " data)
+               (js/console.log "HUB payload event: " (.-event (.-payload data)))
+               (re-frame/dispatch [::events/set-auth-state (.-event (.-payload data))])
+              )))
 
 (defn dev-setup []
   (when config/debug?
@@ -27,17 +36,23 @@
           }})
 
 (defn ^:dev/after-load mount-root []
+  (js/console.log "Top of mount-root")
   (re-frame/clear-subscription-cache!)
+
   (goog-define MANUAL false)
 
   (if MANUAL
     (.configure Amplify (clj->js aws-manual))
     (.configure Amplify aws-exports))
 
-  (re-frame/dispatch-sync [::events/initialize-db])
+  (setup-hub-listener)
+  (js/console.log "before render root-view")
   (reagent/render [root-view]
                   (.getElementById js/document "app")))
 
 (defn init []
+  (js/console.log "Top of init")
+  (re-frame/dispatch-sync [::events/initialize-db])
   (dev-setup)
+  (js/console.log "Before mount-root")
   (mount-root))
