@@ -12,12 +12,7 @@
 
 (defn setup-hub-listener []
   (js/console.log "Top of setup-hub-listener")
-    (.listen Hub "auth"
-             (fn [data]
-               (js/console.log "HUB : " data)
-               (js/console.log "HUB payload event: " (.-event (.-payload data)))
-               (re-frame/dispatch [::events/set-auth-state (.-event (.-payload data))])
-              )))
+  (re-frame/dispatch-sync [::events/init-hub-listener]))
 
 (defn dev-setup []
   (when config/debug?

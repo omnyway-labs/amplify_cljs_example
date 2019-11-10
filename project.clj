@@ -8,6 +8,8 @@
                  [re-frame "0.11.0-rc2"]
                  [re-com "2.6.0"]
                  [garden "1.3.9"]
+                 [org.clojars.stumitchell/clairvoyant "0.2.1"]
+                 [day8/re-frame-tracer "0.1.1-SNAPSHOT"]
                  [ns-tracker "0.4.0"]]
 
   :plugins [[lein-garden "0.3.0"]
