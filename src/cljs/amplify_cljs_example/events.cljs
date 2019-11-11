@@ -2,6 +2,7 @@
   (:require
    [re-frame.core :as re-frame]
    [amplify-cljs-example.db :as db]
+   [amplify-cljs-example.subs :as subs]
    [day8.re-frame.tracing :refer-macros [fn-traced defn-traced]]
    [clairvoyant.core :refer-macros [trace-forms]]
    [re-frame-tracer.core :refer [tracer]]
@@ -32,7 +33,7 @@
  :gen-service-objects
  (fn-traced gen-service-objects-handler [aws-creds]
             (println "gen-service-objects-handler")
-            (re-frame/dispatch [:set-service-objects {:route53 (new AWS/Route53 (:service-object-credentials aws-creds))}])))
+            (re-frame/dispatch [:set-service-objects {:route53 (AWS/Route53 (:service-object-credentials aws-creds))}])))
 
 (re-frame/reg-event-db
  :set-service-objects
@@ -42,8 +43,9 @@
 (re-frame/reg-fx
  :setup-fetch-route53-list
  (fn setup-fetch-route53-list [_]
-            (let [route53 @(re-frame/subscribe [:service-objects])]
-              (route53.listHostedZones (clj->js {}) (fn listHostedZones-handler [err data]
+            (let [route53 (:route53 @(re-frame/subscribe [::subs/service-objects]))]
+              (js/console.log "route53: " route53)
+              (.listHostedZones route53  (clj->js {}) (fn listHostedZones-handler [err data]
                                                       (if err
                                                         (js/console.log err err.stack)
                                                         (js/console.log "success: " data)))))))
