@@ -9,6 +9,12 @@
    ["aws-sdk" :as AWS]
    ))
 
+(defn make-config [creds]
+  (let [config (AWS/Config. (clj->js {:credentials creds :region "us-east-1"}))]
+    (js/console.log "make-config creds:  " creds " config: " config)
+    (println "println make-config creds:  " creds " config: " config)
+    config))
+
 (trace-forms {:tracer (tracer :color "green")}
 
 (re-frame/reg-event-db
@@ -16,28 +22,45 @@
  (fn-traced initialize-db-handler [_ _]
    db/default-db))
 
-(defn make-config [creds]
-  (let [config (AWS/Config. (clj->js {:credentials creds :region "us-east-1"}))]
-    (js/console.log "make-config creds:  " creds " config: " config)
-    (println "println make-config creds:  " creds " config: " config)
-    config))
+(re-frame/reg-fx
+ :gen-aws-config
+ (fn-traced gen-aws-config-handler [aws-creds]
+            (println "gen-aws-config-handler aws-creds: " aws-creds)
+            (println "gen-aws-config-handler config: " (make-config aws-creds))))
+
+(re-frame/reg-fx
+ :gen-service-objects
+ (fn-traced gen-service-objects-handler [aws-creds]
+            (println "gen-service-objects-handler")
+            (re-frame/dispatch [:set-service-objects {:route53 (new AWS/Route53 (:service-object-credentials aws-creds))}])))
+
+(re-frame/reg-event-db
+ :set-service-objects
+ (fn-traced set-service-objects-handler [db [_ new-object]]
+            (assoc-in db [:service-objects]  new-object)))
+
+(re-frame/reg-fx
+ :setup-fetch-route53-list
+ (fn setup-fetch-route53-list [_]
+            (let [route53 @(re-frame/subscribe [:service-objects])]
+              (route53.listHostedZones (clj->js {}) (fn listHostedZones-handler [err data]
+                                                      (if err
+                                                        (js/console.log err err.stack)
+                                                        (js/console.log "success: " data)))))))
 
 (re-frame/reg-event-fx
- ::set-aws-config
- (fn-traced set-aws-config-handler [{:keys [db]} [_ aws-creds]]
-            (println "set-aws-config-handler aws-creds: " aws-creds)
-            {:db (assoc-in db [:creds :aws-config] (make-config aws-creds))}))
+ ::fetch-route53-list
+ (fn-traced fetch-route53-list [_ [_ _]]
+            (println "::fetch-route53-list")
+            {:setup-fetch-route53-list nil}))
 
-;; Aws IAM creds based on the logged in user
-;; Call only by the ::fetch-aws-current-creds fx
-(re-frame/reg-event-db
+(re-frame/reg-event-fx
  ::set-aws-creds
- (fn-traced set-aws-creds-handler [db [_ aws-creds]]
-            (println "::set-aws-creds-handler " aws-creds)
-            (re-frame/dispatch [::set-aws-config aws-creds])
-            (assoc-in db [:creds :aws-access] aws-creds)))
-            ;; {:db (assoc-in db [:creds :aws-access] aws-creds)
-            ;;  ::set-aws-config aws-creds}))
+ (fn-traced set-aws-creds-handler [{:keys [db]} [_ aws-creds]]
+            (println "::set-aws-creds-handler-fx " aws-creds)
+            {:db (assoc-in db [:creds :aws-access] aws-creds)
+             :gen-aws-config aws-creds
+             :gen-service-objects aws-creds}))
 
 (re-frame/reg-event-fx
  ::set-auth-state
@@ -72,5 +95,6 @@
        (.then (fn current-credentials-handler [response]
                 (re-frame/dispatch [::set-aws-creds
                                     {:accessKeyId (.-accessKeyId  response)
-                                     :secretAccessKey (.-secretAccessKey response)}]))))))
+                                     :secretAccessKey (.-secretAccessKey response)
+                                     :service-object-credentials (amp/Auth.essentialCredentials response)}]))))))
 )

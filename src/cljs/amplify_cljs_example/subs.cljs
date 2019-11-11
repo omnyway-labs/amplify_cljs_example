@@ -27,4 +27,8 @@
  (fn auth-state-handler [db _]
    (get-in db [:auth-state])))
 
+(re-frame/reg-sub
+ ::service-objects
+ (fn service-objects-handler [db _]
+            (get-in db [:service-objects])))
 )

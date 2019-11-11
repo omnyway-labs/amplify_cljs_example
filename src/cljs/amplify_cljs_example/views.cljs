@@ -29,13 +29,8 @@
   (js/console.log "main-panel")
   (js/console.log "amp/Auth: " amp/Auth)
 
-  ;; (-> (amp/Auth.currentCredentials)
-  ;;     (.then (fn [response]
-  ;;              (re-frame/dispatch [::events/set-aws-creds
-  ;;                                  {:accessKeyId (.-accessKeyId  response)
-  ;;                                   :secretAccessKey (.-secretAccessKey response)}]))))
-
-  (let [aws-config @(re-frame/subscribe [::subs/aws-config])]
+  (re-frame/dispatch [::events/fetch-route53-list])
+  (let [aws-config "foo"]
     [re-com/v-box
      :height "100%"
      :children [[title]

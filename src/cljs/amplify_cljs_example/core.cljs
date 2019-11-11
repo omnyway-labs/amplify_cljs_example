@@ -24,6 +24,8 @@
     (reagent/reactify-component views/main-panel) true)))
 
 (def aws-manual
+
+  ;; User pool reframerecomamplifye16cd456a_userpool_16cd456a-dev
   {:Auth {:identityPoolId "us-east-1:61fe6ded-9c0f-481d-b32b-b624ad8119dc"
           :region "us-east-1"
           :userPoolId "us-east-1_GdM23KoC7"
