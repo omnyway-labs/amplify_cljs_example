@@ -31,4 +31,9 @@
  ::service-objects
  (fn service-objects-handler [db _]
             (get-in db [:service-objects])))
+
+(re-frame/reg-sub
+ ::route53-list
+ (fn route53-list-handler [db _]
+   (get-in db [:route-53-list])))
 )

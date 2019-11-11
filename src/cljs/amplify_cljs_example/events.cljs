@@ -33,12 +33,18 @@
  :gen-service-objects
  (fn-traced gen-service-objects-handler [aws-creds]
             (println "gen-service-objects-handler")
-            (re-frame/dispatch [:set-service-objects {:route53 (AWS/Route53 (:service-object-credentials aws-creds))}])))
+            (re-frame/dispatch [:set-service-objects {:route53 (new AWS/Route53 (:service-object-credentials aws-creds))}])))
 
 (re-frame/reg-event-db
  :set-service-objects
  (fn-traced set-service-objects-handler [db [_ new-object]]
             (assoc-in db [:service-objects]  new-object)))
+
+(re-frame/reg-event-db
+ :set-route53-list
+ (fn-traced set-route53-list-handler [db [_ err data]]
+            (println "set-route53-list-handler err: " err " data: " data)
+            (assoc-in db [:route-53-list] (js->clj (.-HostedZones data)))))
 
 (re-frame/reg-fx
  :setup-fetch-route53-list
@@ -46,9 +52,10 @@
             (let [route53 (:route53 @(re-frame/subscribe [::subs/service-objects]))]
               (js/console.log "route53: " route53)
               (.listHostedZones route53  (clj->js {}) (fn listHostedZones-handler [err data]
-                                                      (if err
-                                                        (js/console.log err err.stack)
-                                                        (js/console.log "success: " data)))))))
+                                                        (re-frame/dispatch [:set-route53-list err data]))))))
+                                                      ;; (if err
+                                                      ;;   (js/console.log "listHostedZones-handler err: "err err.stack)
+                                                      ;;   (js/console.log "listHostedZones-handler success: " data)))))))
 
 (re-frame/reg-event-fx
  ::fetch-route53-list
