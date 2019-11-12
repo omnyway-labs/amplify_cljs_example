@@ -14,7 +14,8 @@
                                                                        amplify-cljs-example.core/MANUAL false}}}
                 :devtools        {:http-root    "resources/public"
                                   :http-port    8280
-                                  }}
+                                  }
+                :release         {:compiler-options {:optimizations :simple}}}
 
           :browser-test
           {:target :browser-test
