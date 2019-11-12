@@ -18,7 +18,7 @@
                                   :http-port    8280
                                   }
                 ;; Could not get this to work in prod if the :optimizations were the default `advanced`
-                :release         {:compiler-options {:optimizations :simple}}}
+                }};;:release         {:compiler-options {:optimizations :simple}}}
 
           :browser-test
           {:target :browser-test
