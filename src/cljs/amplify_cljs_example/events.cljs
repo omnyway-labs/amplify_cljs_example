@@ -16,7 +16,7 @@
     (println "println make-config creds:  " creds " config: " config)
     config))
 
-;(trace-forms {:tracer (tracer :color "green")}
+(trace-forms {:tracer (tracer :color "green")}
 
 (re-frame/reg-event-db
  ::initialize-db
@@ -106,4 +106,4 @@
                                     {:accessKeyId (.-accessKeyId  response)
                                      :secretAccessKey (.-secretAccessKey response)
                                      :service-object-credentials (amp/Auth.essentialCredentials response)}]))))))
-;)
+)
