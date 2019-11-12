@@ -49,13 +49,11 @@
 (re-frame/reg-fx
  :setup-fetch-route53-list
  (fn setup-fetch-route53-list [_]
-            (let [route53 (:route53 @(re-frame/subscribe [::subs/service-objects]))]
+   ;; Info on js externs type hints https://clojurescript.org/guides/externs
+            (let [route53 ^js/AWS.Route53 (:route53 @(re-frame/subscribe [::subs/service-objects]))]
               (js/console.log "route53: " route53)
               (.listHostedZones route53  (clj->js {}) (fn listHostedZones-handler [err data]
                                                         (re-frame/dispatch [:set-route53-list err data]))))))
-                                                      ;; (if err
-                                                      ;;   (js/console.log "listHostedZones-handler err: "err err.stack)
-                                                      ;;   (js/console.log "listHostedZones-handler success: " data)))))))
 
 (re-frame/reg-event-fx
  ::fetch-route53-list
