@@ -8,6 +8,7 @@
   "dependencies": {
     "aws-amplify": "^1.2.4",
     "aws-amplify-react": "^2.5.4",
+    "aws-sdk": "^2.569.0",
     "create-react-class": "15.6.3",
     "highlight.js": "9.16.2",
     "react": "16.11.0",
