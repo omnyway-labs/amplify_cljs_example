@@ -19,7 +19,7 @@
          auth-state (re-frame/subscribe [::subs/auth-state])]
 
     [re-com/title
-     :label (str "Hello from " @name " auth-state: " @auth-state)
+     :label (str "New Hello from " @name " auth-state: " @auth-state)
      :level :level1]
     ))
 
