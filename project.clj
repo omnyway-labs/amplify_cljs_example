@@ -35,7 +35,7 @@
                                     :pretty-print? true}}]}
 
   :aliases {"dev"  ["with-profile" "dev" "run" "-m" "shadow.cljs.devtools.cli" "watch" "app"]
-            "prod" ["with-profile" "prod" "run" "-m" "shadow.cljs.devtools.cli" "release" "app"]}
+            "prod" ["with-profile" "dev" "run" "-m" "shadow.cljs.devtools.cli" "release" "app"]}
 
   :profiles
   {:dev
