@@ -43,8 +43,12 @@
 (re-frame/reg-event-db
  :set-route53-list
  (fn-traced set-route53-list-handler [db [_ err data]]
-            (println "set-route53-list-handler err: " err " data: " data)
-            (assoc-in db [:route-53-list] (js->clj (.-HostedZones data)))))
+            (js/console.log "set-route53-list-handler err: " err " data: " data)
+            (println "(js->clj err :keywordize-keys true)): " (js->clj err :keywordize-keys true))
+            (println "(js->clj data :keywordize-keys true): " (js->clj data :keywordize-keys true))
+            (if err
+              (assoc-in db [:route-53-list] (js->clj (js->clj err :keywordize-keys true)))
+              (assoc-in db [:route-53-list] (js->clj (:HostedZones (js->clj data :keywordize-keys true)))))))
 
 (re-frame/reg-fx
  :setup-fetch-route53-list
