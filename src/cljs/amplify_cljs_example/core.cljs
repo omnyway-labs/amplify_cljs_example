@@ -23,8 +23,9 @@
    (withAuthenticator
     (reagent/reactify-component views/main-panel) true)))
 
-(def aws-manual
+(goog-define MANUAL false)
 
+(def aws-manual
   ;; User pool reframerecomamplifye16cd456a_userpool_16cd456a-dev
   {:Auth {:identityPoolId "us-east-1:61fe6ded-9c0f-481d-b32b-b624ad8119dc"
           :region "us-east-1"
@@ -35,8 +36,6 @@
 (defn ^:dev/after-load mount-root []
   (js/console.log "Top of mount-root")
   (re-frame/clear-subscription-cache!)
-
-  (goog-define MANUAL false)
 
   (if MANUAL
     (.configure Amplify (clj->js aws-manual))
