@@ -35,7 +35,7 @@
                                     :pretty-print? true}}]}
 
   :aliases {"dev"  ["with-profile" "dev" "run" "-m" "shadow.cljs.devtools.cli" "watch" "app"]
-            "prod" ["with-profile" "prod" "run" "-m" "shadow.cljs.devtools.cli" "release" "app" "--config-merge" "{:closure-defines {re-frame.trace.trace-enabled? true day8.re-frame.tracing.trace-enabled? true clairvoyant.core.devmode true}}"]}
+            "prod" ["with-profile" "prod" "run" "-m" "shadow.cljs.devtools.cli" "release" "app"]}
 
   :profiles
   {:dev

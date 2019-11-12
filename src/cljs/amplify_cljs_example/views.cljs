@@ -19,18 +19,13 @@
          auth-state (re-frame/subscribe [::subs/auth-state])]
 
     [re-com/title
-     :label (str "New Hello from " @name " auth-state: " @auth-state)
+     :label (str "Hello from " @name " auth-state: " @auth-state)
      :level :level1]
     ))
 
-;; (defn list-s3
-;;   )
-
 (defn main-panel []
   (js/console.log "main-panel")
-  (js/console.log "amp/Auth: " amp/Auth)
 
-  (let [aws-config "foo"]
     [re-com/v-box
      :height "100%"
      :children [[title]
@@ -46,4 +41,4 @@
                              :child  [re-com/label
                                       :label (str @(re-frame/subscribe [::subs/route53-list]))
                                       :style {:margin-left "15px"}]]]]
-                ]])))
+                ]]))
