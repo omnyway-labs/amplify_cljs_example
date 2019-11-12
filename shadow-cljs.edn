@@ -17,8 +17,8 @@
                 :devtools        {:http-root    "resources/public"
                                   :http-port    8280
                                   }
-                ;; Could not get this to work in prod if the :optimizations were the default `advanced`
-                :release         {:compiler-options {:pretty-print true :pseudo-names true :infer-externs :auto}}} ;:optimizations :simple
+                ;; You can add :pretty-print true :pseudo-names true to compiler options to debug js in prod
+                :release         {:compiler-options {:infer-externs :auto}}}
 
           :browser-test
           {:target :browser-test

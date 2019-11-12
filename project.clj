@@ -1,4 +1,4 @@
-(defproject amplify-cljs-example "0.1.0-SNAPSHOT"
+(defproject amplify-cljs-example "0.2.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [org.clojure/clojurescript "1.10.520"
                   :exclusions [com.google.javascript/closure-compiler-unshaded
@@ -44,9 +44,5 @@
                    [day8.re-frame/tracing "0.5.3"]]}
 
    :prod
-   {:dependencies [[binaryage/devtools "0.9.10"]
-                   [day8.re-frame/re-frame-10x "0.4.5"]
-                   [day8.re-frame/tracing "0.5.3"]]}
-
-;   { :dependencies [[day8.re-frame/tracing-stubs "0.5.3"]]}
+   { :dependencies [[day8.re-frame/tracing-stubs "0.5.3"]]}
    })
