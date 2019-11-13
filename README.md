@@ -101,8 +101,10 @@ lein prod
 
 The `amplify.yml` file is the build instructions for the AWS Amplify CI and Deployment.
 
-Instructions for setting up your own AWS Amplify Deploy is in the wiki at [Deploy to CloudFront with Amplify Console](https://github.com/omnyway-labs/re-frame-re-com-amplify-shadow-cljs/wiki/2.-Deploy-to-CloudFront-with-Amplify-Console
-)
+Instructions for setting up your own AWS Amplify Deploy is in the wiki at [Deploy to CloudFront with Amplify Console](https://github.com/omnyway-labs/re-frame-re-com-amplify-shadow-cljs/wiki/2.-Deploy-to-CloudFront-with-Amplify-Console)
+
+An example of the code running from such a deploy may be at https://reframe-amplify.lab.omnyway.net/
+
 ## License - Apache 2.0
 
 Copyright 2019 Omnyway Inc.
